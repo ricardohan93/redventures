@@ -12,6 +12,7 @@ const Button = ({
 	icon = false,
 	fill = white,
 	weight = 400,
+	onClick,
 	children
 }) => (
 	<button
@@ -29,6 +30,8 @@ const Button = ({
 			justify-content: center;
 			font-weight: ${weight};
 		`}
+		type='button'
+		onClick={onClick}
 	>
 		{icon && (
 			<Arrow

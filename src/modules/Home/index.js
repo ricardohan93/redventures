@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "assets/logo-greenthumb.svg";
 import { H1 } from "components/Text";
 import Button from "components/Button";
@@ -22,6 +23,12 @@ const Wrap = styled.div`
 `;
 
 const Home = () => {
+	let history = useHistory();
+
+	const goToForm = () => {
+		history.push("/plant-form");
+	};
+
 	return (
 		<Layout>
 			<div
@@ -53,7 +60,7 @@ const Home = () => {
 						>
 							Find your next green friend
 						</H1>
-						<Button weight='800' icon={true}>
+						<Button weight='800' icon={true} onClick={goToForm}>
 							start quizz
 						</Button>
 					</Wrap>
