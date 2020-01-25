@@ -9,6 +9,7 @@ const Button = ({
 	height = 50,
 	color = white,
 	bg = cucumber,
+	border = "none",
 	icon = false,
 	fill = white,
 	weight = 400,
@@ -22,7 +23,7 @@ const Button = ({
 			color: ${color};
 			background-color: ${bg};
 			border-radius: 25px;
-			border: none;
+			border: ${border};
 			font-size: 1.6rem;
 			cursor: pointer;
 			display: flex;

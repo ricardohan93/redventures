@@ -1,11 +1,19 @@
-import React, { useContext, useState, Fragment } from "react";
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "utils/context";
+import mq from "styles/breakpoints";
+import sun from "assets/sun.png";
+import { brown, cucumber } from "styles/colors";
 
+import { H1 } from "components/Text";
+import FormLayout from "layouts/FormLayout";
 import Button from "components/Button";
 import SunlightForm from "./components/SunlightForm";
 import WaterForm from "./components/WaterForm";
 import PetsForm from "./components/PetsForm";
+import { space } from "styles/space";
 
 const initialForm = {
 	currentStep: 1,
@@ -21,8 +29,10 @@ const PlantForm = () => {
 
 	const handleChange = e => {
 		const { name, value } = e.target;
+		console.log("handleChange", name, value);
 		setData({
-			[name]: value
+			[name]: value,
+			currentStep: data.currentStep
 		});
 	};
 
@@ -45,8 +55,39 @@ const PlantForm = () => {
 	};
 
 	return (
-		<Fragment>
-			<form>
+		<FormLayout>
+			<div
+				css={css`
+					max-width: 760px;
+					margin: 0 auto;
+				`}
+			>
+				<img
+					css={css`
+						display: block;
+						margin: 0 auto;
+					`}
+					src={sun}
+					alt='sunlight'
+				/>
+				<H1
+					size='3.5'
+					weight='400'
+					color={brown}
+					css={css`
+						margin-bottom: ${space[6]}px;
+					`}
+				>
+					First, set the amount of{" "}
+					<span
+						css={css`
+							font-weight: 800;
+						`}
+					>
+						sunlight
+					</span>{" "}
+					your plant will get
+				</H1>
 				<SunlightForm
 					currentStep={data.currentStep}
 					handleChange={handleChange}
@@ -62,18 +103,64 @@ const PlantForm = () => {
 					handleChange={handleChange}
 					pets={data.pets}
 				/>
-				{data.currentStep === 1 && (
-					<Button onClick={() => history.push("/")}>Home</Button>
-				)}
-				{data.currentStep !== 1 && <Button onClick={prev}>Previous</Button>}
-				{data.currentStep < 3 && <Button onClick={next}>Next</Button>}
-				{data.currentStep === 3 && (
-					<Button onClick={() => dispatch({ type: "FETCH", data })}>
-						Finish
-					</Button>
-				)}
-			</form>
-		</Fragment>
+				<div
+					css={css`
+						width: 100%;
+						display: flex;
+						justify-content: space-between;
+					`}
+				>
+					{data.currentStep === 1 && (
+						<Button
+							bg='transparent'
+							color={cucumber}
+							border={`1px solid ${cucumber}`}
+							icon={true}
+							fill={cucumber}
+							onClick={() => history.push("/")}
+						>
+							home
+						</Button>
+					)}
+					{data.currentStep !== 1 && (
+						<Button
+							bg='transparent'
+							color={cucumber}
+							border={`1px solid ${cucumber}`}
+							icon={true}
+							fill={cucumber}
+							onClick={prev}
+						>
+							previous
+						</Button>
+					)}
+					{data.currentStep < 3 && (
+						<Button
+							bg='transparent'
+							color={cucumber}
+							border={`1px solid ${cucumber}`}
+							icon={true}
+							fill={cucumber}
+							onClick={next}
+						>
+							next
+						</Button>
+					)}
+					{data.currentStep === 3 && (
+						<Button
+							bg='transparent'
+							color={cucumber}
+							border={`1px solid ${cucumber}`}
+							icon={true}
+							fill={cucumber}
+							onClick={() => dispatch({ type: "FETCH", data })}
+						>
+							finish
+						</Button>
+					)}
+				</div>
+			</div>
+		</FormLayout>
 	);
 };
 
