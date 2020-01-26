@@ -2,7 +2,7 @@
 import { css, jsx } from "@emotion/core";
 import { cucumber, white } from "styles/colors";
 import { space } from "styles/space";
-import { ReactComponent as Arrow } from "assets/arrow.svg";
+import Icon from "components/Icon";
 
 const Button = ({
 	width = 170,
@@ -11,10 +11,12 @@ const Button = ({
 	bg = cucumber,
 	border = "none",
 	icon = false,
+	backIcon = false,
 	fill = white,
 	weight = 400,
 	onClick,
-	children
+	children,
+	...props
 }) => (
 	<button
 		css={css`
@@ -31,15 +33,24 @@ const Button = ({
 			justify-content: center;
 			font-weight: ${weight};
 		`}
+		{...props}
 		type='button'
 		onClick={onClick}
 	>
 		{icon && (
-			<Arrow
-				width='20'
-				height='20'
+			<Icon
+				name='Arrow'
+				size='20'
 				fill={fill}
-				style={{ marginRight: space[3] }}
+				style={{ marginRight: `${space[3]}px` }}
+			/>
+		)}
+		{backIcon && (
+			<Icon
+				name='BackArrow'
+				size='20'
+				fill={fill}
+				style={{ marginRight: `${space[3]}px` }}
 			/>
 		)}
 		{children}

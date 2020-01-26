@@ -75,6 +75,8 @@ const PlantForm = () => {
 					weight='400'
 					color={brown}
 					css={css`
+						font-size: 2.3rem;
+						line-height: 3rem;
 						margin-bottom: ${space[6]}px;
 					`}
 				>
@@ -107,15 +109,35 @@ const PlantForm = () => {
 					css={css`
 						width: 100%;
 						display: flex;
-						justify-content: space-between;
+						flex-flow: column wrap;
+						align-items: center;
+						${mq[0]} {
+							flex-flow: row wrap;
+							justify-content: space-between;
+						}
 					`}
 				>
+					{data.currentStep < 3 && (
+						<Button
+							border={`1px solid ${cucumber}`}
+							icon={true}
+							onClick={next}
+							css={css`
+								margin-bottom: ${space[4]}px;
+								${mq[0]} {
+									margin-bottom: 0;
+								}
+							`}
+						>
+							next
+						</Button>
+					)}
 					{data.currentStep === 1 && (
 						<Button
 							bg='transparent'
 							color={cucumber}
 							border={`1px solid ${cucumber}`}
-							icon={true}
+							backIcon={true}
 							fill={cucumber}
 							onClick={() => history.push("/")}
 						>
@@ -127,23 +149,11 @@ const PlantForm = () => {
 							bg='transparent'
 							color={cucumber}
 							border={`1px solid ${cucumber}`}
-							icon={true}
+							backIcon={true}
 							fill={cucumber}
 							onClick={prev}
 						>
 							previous
-						</Button>
-					)}
-					{data.currentStep < 3 && (
-						<Button
-							bg='transparent'
-							color={cucumber}
-							border={`1px solid ${cucumber}`}
-							icon={true}
-							fill={cucumber}
-							onClick={next}
-						>
-							next
 						</Button>
 					)}
 					{data.currentStep === 3 && (

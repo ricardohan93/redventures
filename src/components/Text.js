@@ -9,9 +9,10 @@ const H1 = ({ size, weight = 600, color = dark, children, ...props }) => (
 			font-size: ${size - 3.5}rem;
 			text-align: center;
 			color: ${color};
+			font-weight: ${weight};
 			${mq[0]} {
+				line-height: 5rem;
 				font-size: ${size}rem;
-				font-weight: ${weight};
 			}
 		`}
 		{...props}

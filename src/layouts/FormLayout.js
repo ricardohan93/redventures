@@ -62,6 +62,17 @@ const SidebarLogo = () => (
 const FormLayout = ({ children }) => (
 	<Layout>
 		<SidebarLogo />
+		<div
+			css={css`
+				text-align: center;
+				margin-bottom: ${space[4]}px;
+				${mq[1]} {
+					display: none;
+				}
+			`}
+		>
+			<Logo width='200px' />
+		</div>
 		{children}
 	</Layout>
 );

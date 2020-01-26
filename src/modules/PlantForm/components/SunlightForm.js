@@ -2,14 +2,19 @@
 import { css, jsx } from "@emotion/core";
 import Checkbox from "components/Checkbox";
 import { P } from "components/Text";
-import { ReactComponent as HighSun } from "assets/white/high-sun.svg";
-import { ReactComponent as LowSun } from "assets/white/low-sun.svg";
-import { ReactComponent as NoSun } from "assets/white/no-answer.svg";
+import Icon from "components/Icon";
 import mq from "styles/breakpoints";
 import { space } from "styles/space";
 
 const SunlightForm = ({ currentStep, sun, handleChange }) => {
 	if (currentStep !== 1) return null;
+
+	const customStyles = css`
+		margin-right: ${space[3]}px;
+		${mq[0]} {
+			margin-right: 0;
+		}
+	`;
 
 	return (
 		<div
@@ -29,7 +34,7 @@ const SunlightForm = ({ currentStep, sun, handleChange }) => {
 				onChange={handleChange}
 				selected={sun}
 			>
-				<HighSun width='50px' fill='orange' />
+				<Icon name='HighSun' size='50px' fill='orange' css={customStyles} />
 				<P>High sunlight</P>
 			</Checkbox>
 			<Checkbox
@@ -39,7 +44,7 @@ const SunlightForm = ({ currentStep, sun, handleChange }) => {
 				onChange={handleChange}
 				selected={sun}
 			>
-				<LowSun width='50px' fill='orange' />
+				<Icon name='LowSun' size='50px' fill='orange' css={customStyles} />
 				<P>Low sunlight</P>
 			</Checkbox>
 			<Checkbox
@@ -49,7 +54,7 @@ const SunlightForm = ({ currentStep, sun, handleChange }) => {
 				onChange={handleChange}
 				selected={sun}
 			>
-				<NoSun width='50px' fill='orange' />
+				<Icon name='NoAnswer' size='50px' fill='orange' css={customStyles} />
 				<P>No sunlight</P>
 			</Checkbox>
 		</div>
