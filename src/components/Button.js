@@ -2,26 +2,30 @@
 import { css, jsx } from "@emotion/core";
 import { cucumber, white } from "styles/colors";
 import { space } from "styles/space";
-import { ReactComponent as Arrow } from "assets/arrow.svg";
+import Icon from "components/Icon";
 
 const Button = ({
-	width = 170,
-	height = 50,
+	width = "170px",
+	height = "50px",
 	color = white,
 	bg = cucumber,
+	border = "none",
 	icon = false,
+	backIcon = false,
 	fill = white,
 	weight = 400,
-	children
+	onClick,
+	children,
+	...props
 }) => (
 	<button
 		css={css`
-			width: ${width}px;
-			height: ${height}px;
+			width: ${width};
+			height: ${height};
 			color: ${color};
 			background-color: ${bg};
 			border-radius: 25px;
-			border: none;
+			border: ${border};
 			font-size: 1.6rem;
 			cursor: pointer;
 			display: flex;
@@ -29,13 +33,24 @@ const Button = ({
 			justify-content: center;
 			font-weight: ${weight};
 		`}
+		{...props}
+		type='button'
+		onClick={onClick}
 	>
 		{icon && (
-			<Arrow
-				width='20'
-				height='20'
+			<Icon
+				name='Arrow'
+				size='20'
 				fill={fill}
-				style={{ marginRight: space[3] }}
+				style={{ marginRight: `${space[3]}px` }}
+			/>
+		)}
+		{backIcon && (
+			<Icon
+				name='BackArrow'
+				size='20'
+				fill={fill}
+				style={{ marginRight: `${space[3]}px` }}
 			/>
 		)}
 		{children}
