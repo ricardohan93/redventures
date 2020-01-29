@@ -2,13 +2,7 @@ import React from "react";
 
 const OneDrop = ({ size = "57px", fill, ...props }) => (
 	<svg width={size} height={size} viewBox='0 0 57 70' version='1.1' {...props}>
-		<g
-			id='assets'
-			stroke='none'
-			stroke-width='1'
-			fill='none'
-			fill-rule='evenodd'
-		>
+		<g id='assets' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
 			<g
 				id='styleguide'
 				transform='translate(-133.000000, -845.000000)'

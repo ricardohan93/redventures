@@ -7,3 +7,4 @@ export { default as OneDrop } from "./icons/OneDrop";
 export { default as Pet } from "./icons/Pet";
 export { default as ThreeDrops } from "./icons/ThreeDrops";
 export { default as TwoDrops } from "./icons/TwoDrops";
+export { default as Toxic } from "./icons/Toxic";

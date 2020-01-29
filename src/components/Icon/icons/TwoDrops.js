@@ -2,13 +2,7 @@ import React from "react";
 
 const TwoDrops = ({ size = "57px", fill, ...props }) => (
 	<svg width={size} height={size} viewBox='0 0 78 70' version='1.1' {...props}>
-		<g
-			id='assets'
-			stroke='none'
-			stroke-width='1'
-			fill='none'
-			fill-rule='evenodd'
-		>
+		<g id='assets' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
 			<g
 				id='styleguide'
 				transform='translate(-270.000000, -845.000000)'

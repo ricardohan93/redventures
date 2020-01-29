@@ -1,17 +1,23 @@
 import React, { useReducer } from "react";
-import { fetchPlants } from "services/plants";
+
+// const reducer = (state, action) => {
+// 	return {
+// 		FETCH: async function() {
+// 			const { data } = await fetchPlants(action.data);
+// 			console.log("results => ", data);
+// 			return [...state, ...data];
+// 		},
+// 		default: ""
+// 	}[action.type]();
+// };
 
 const reducer = (state, action) => {
-	console.log("deu dispatch");
-	return {
-		FETCH: async function() {
-			console.log("entrou no FETCH");
-			const { data } = await fetchPlants(action.data);
-			console.log("results => ", data);
-			return [...data];
-		},
-		default: ""
-	}[action.type]();
+	switch (action.type) {
+		case "FETCH":
+			return [...state, action.list];
+		default:
+			console.log("errorr");
+	}
 };
 
 const initialState = [];

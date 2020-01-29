@@ -11,7 +11,6 @@ const H1 = ({ size, weight = 600, color = dark, children, ...props }) => (
 			color: ${color};
 			font-weight: ${weight};
 			${mq[0]} {
-				line-height: 5rem;
 				font-size: ${size}rem;
 			}
 		`}
@@ -19,6 +18,20 @@ const H1 = ({ size, weight = 600, color = dark, children, ...props }) => (
 	>
 		{children}
 	</h1>
+);
+
+const H2 = ({ size, weight = 600, color = dark, children, ...props }) => (
+	<h2
+		css={css`
+			font-size: ${size}rem;
+			text-align: center;
+			color: ${color};
+			font-weight: ${weight};
+		`}
+		{...props}
+	>
+		{children}
+	</h2>
 );
 
 const P = ({ size = 1.6, weight = 400, color = brown, children, ...props }) => (
@@ -35,4 +48,4 @@ const P = ({ size = 1.6, weight = 400, color = brown, children, ...props }) => (
 	</p>
 );
 
-export { H1, P };
+export { H1, H2, P };

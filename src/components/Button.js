@@ -5,8 +5,8 @@ import { space } from "styles/space";
 import Icon from "components/Icon";
 
 const Button = ({
-	width = 170,
-	height = 50,
+	width = "170px",
+	height = "50px",
 	color = white,
 	bg = cucumber,
 	border = "none",
@@ -20,8 +20,8 @@ const Button = ({
 }) => (
 	<button
 		css={css`
-			width: ${width}px;
-			height: ${height}px;
+			width: ${width};
+			height: ${height};
 			color: ${color};
 			background-color: ${bg};
 			border-radius: 25px;

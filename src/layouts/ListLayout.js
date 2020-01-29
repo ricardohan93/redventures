@@ -14,11 +14,11 @@ const Layout = styled.section`
 	padding: ${space[4]}px ${space[5]}px;
 	${mq[0]} {
 		height: 100vh;
-		padding: ${space[8]}px ${space[6]}px;
+		padding: ${space[6]}px;
 	}
 `;
 
-const FormLayout = ({ children }) => (
+const ListLayout = ({ children }) => (
 	<Layout>
 		<SidebarLogo />
 		<div
@@ -43,4 +43,4 @@ const FormLayout = ({ children }) => (
 	</Layout>
 );
 
-export default FormLayout;
+export default ListLayout;

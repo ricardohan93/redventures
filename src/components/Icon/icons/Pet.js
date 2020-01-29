@@ -2,13 +2,7 @@ import React from "react";
 
 const Pets = ({ size = "57px", fill, ...props }) => (
 	<svg width={size} height={size} viewBox='0 0 94 70' version='1.1' {...props}>
-		<g
-			id='assets'
-			stroke='none'
-			stroke-width='1'
-			fill='none'
-			fill-rule='evenodd'
-		>
+		<g id='assets' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
 			<g
 				id='styleguide'
 				transform='translate(-568.000000, -716.000000)'
