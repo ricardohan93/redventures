@@ -35,7 +35,7 @@ const PlantLayout = ({ children }) => (
 		</div>
 		<div
 			css={css`
-				max-width: 760px;
+				max-width: 840px;
 				margin: 0 auto;
 			`}
 		>

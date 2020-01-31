@@ -6,8 +6,10 @@ import { useParams } from "react-router-dom";
 import { fetchPlantDetails } from "services/plants";
 
 import Icon from "components/Icon";
-import { gray200, gray400, light } from "styles/colors";
+import mq from "styles/breakpoints";
+import { gray200, gray400, light, brown, cucumber } from "styles/colors";
 import { space } from "styles/space";
+import Button from "components/Button";
 import { H1, H2, P } from "components/Text";
 import Plantlayout from "layouts/PlantLayout";
 
@@ -17,6 +19,7 @@ const iconSpacing = css`
 
 const PlantDetails = () => {
 	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
 	const [plantData, setPlantData] = useState(null);
 	let { id } = useParams();
 
@@ -25,12 +28,17 @@ const PlantDetails = () => {
 		setPlantData(data);
 	};
 
-	const handleChange = e => {
+	const handleNameChange = e => {
 		setName(e.target.value);
+	};
+
+	const handleEmailChange = e => {
+		setEmail(e.target.value);
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		// validate form
 		console.log("submitted");
 	};
 
@@ -212,6 +220,9 @@ const PlantDetails = () => {
 						background-color: ${gray200};
 						border-radius: 5px;
 						padding: ${space[5]}px;
+						${mq[0]} {
+							min-width: 410px;
+						}
 					`}
 				>
 					<H1
@@ -229,17 +240,89 @@ const PlantDetails = () => {
 							max-width: 270px;
 							text-align: left;
 							line-height: 2.4rem;
+							margin-bottom: ${space[5]}px;
 						`}
 					>
 						Tell us your name and e-mail and we will get in touch regarding your
-						order
+						order ;{`)`}
 					</P>
-					<form onSubmit={handleSubmit}>
-						<label>
+					<form
+						css={css`
+							display: flex;
+							flex-flow: column wrap;
+						`}
+					>
+						<label
+							htmlFor='name'
+							css={css`
+								color: ${brown};
+								font-weight: 800;
+								font-size: 1.7rem;
+								margin-bottom: ${space[2]}px;
+							`}
+						>
 							Name
-							<input type='text' value={name} onChange={handleChange} />
 						</label>
-						<input type='submit' value='Submit' />
+						<input
+							type='text'
+							id='name'
+							value={name}
+							onChange={handleNameChange}
+							placeholder='Crazy Plant Person'
+							css={css`
+								padding: ${space[3]}px ${space[4]}px;
+								border-radius: ${space[5]}px;
+								border: none;
+								margin-bottom: ${space[4]}px;
+								&::placeholder {
+									color: ${light};
+									font-size: 1.4rem;
+									font-weight: 500;
+								}
+							`}
+						/>
+						<label
+							htmlFor='email'
+							css={css`
+								color: ${brown};
+								font-weight: 800;
+								font-size: 1.7rem;
+								margin-bottom: ${space[2]}px;
+							`}
+						>
+							E-mail
+						</label>
+						<input
+							type='text'
+							id='email'
+							value={email}
+							onChange={handleEmailChange}
+							placeholder='plantperson@email.com'
+							css={css`
+								padding: ${space[3]}px ${space[4]}px;
+								border-radius: ${space[5]}px;
+								border: none;
+								margin-bottom: ${space[4]}px;
+								&::placeholder {
+									color: ${light};
+									font-size: 1.4rem;
+									font-weight: 500;
+								}
+							`}
+						/>
+						<Button
+							bg='transparent'
+							color={cucumber}
+							border={`1px solid ${cucumber}`}
+							fill={cucumber}
+							onClick={handleSubmit}
+							css={css`
+								margin-top: ${space[6]}px;
+								align-self: flex-end;
+							`}
+						>
+							send
+						</Button>
 					</form>
 				</div>
 			</div>
