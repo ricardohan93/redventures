@@ -9,3 +9,18 @@ export const fetchPlants = ({ sun, water, pets }) => {
 		`${baseURL}?sun=${sun}&water=${water}&pets=${Boolean(pets)}`
 	);
 };
+
+export const fetchPlantDetails = ({ id }) => {
+	return axios.get(`${baseURL}/plant?id=${id}`);
+};
+
+export const sendFormData = ({ sun, water, pets, name, email, id }) => {
+	return axios.post(
+		`${baseURL}?sun=${sun}&water=${water}&pets=${Boolean(pets)}`,
+		{
+			name,
+			email,
+			id
+		}
+	);
+};
