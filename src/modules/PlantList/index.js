@@ -1,47 +1,17 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { useContext } from "react";
 import { H1 } from "components/Text";
 import pick from "assets/pick.png";
 import mq from "styles/breakpoints";
 import { space } from "styles/space";
-// import { Context } from "utils/context";
+import { Context } from "utils/context";
 
 import Card from "components/Card";
 import ListLayout from "layouts/ListLayout";
 
-const mockState = [
-	{
-		id: 4,
-		name: "Ficus lyrata",
-		price: 30,
-		sun: "high",
-		toxicity: false,
-		url: "https://front-static-recruitment.s3.amazonaws.com/ficus-lyrata.jpg",
-		water: "regularly"
-	},
-	{
-		id: 5,
-		name: "Bamboo",
-		price: 15,
-		sun: "low",
-		toxicity: true,
-		url: "https://front-static-recruitment.s3.amazonaws.com/lucky-bamboo.jpg",
-		water: "rarely"
-	},
-	{
-		id: 6,
-		name: "Ponytail Palm",
-		price: 50,
-		sun: "no",
-		toxicity: false,
-		url: "https://front-static-recruitment.s3.amazonaws.com/ponytail-palm.jpg",
-		water: "daily"
-	}
-];
-
 const PlantList = () => {
-	// const { state } = useContext(Context);
-	console.log("state", mockState);
+	const { state } = useContext(Context);
 
 	return (
 		<ListLayout>
@@ -88,7 +58,7 @@ const PlantList = () => {
 					}
 				`}
 			>
-				{mockState.map(plant => (
+				{state.map(plant => (
 					<Card plant={plant} key={plant.id} />
 				))}
 			</div>

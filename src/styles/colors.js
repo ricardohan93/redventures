@@ -7,3 +7,4 @@ export const light = "#6E6E6E";
 export const white = "#FFF";
 export const gray200 = "#f2f2f2";
 export const gray400 = "#E5E5E5";
+export const red400 = "#E94E4E";

@@ -1,20 +1,9 @@
 import React, { useReducer } from "react";
 
-// const reducer = (state, action) => {
-// 	return {
-// 		FETCH: async function() {
-// 			const { data } = await fetchPlants(action.data);
-// 			console.log("results => ", data);
-// 			return [...state, ...data];
-// 		},
-// 		default: ""
-// 	}[action.type]();
-// };
-
 const reducer = (state, action) => {
 	switch (action.type) {
 		case "FETCH":
-			return [...state, action.list];
+			return action.list;
 		default:
 			console.log("errorr");
 	}

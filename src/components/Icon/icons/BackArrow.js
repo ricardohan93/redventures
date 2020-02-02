@@ -9,7 +9,7 @@ const BackArrow = ({ size = "20px", fill, ...props }) => (
 		width={size}
 		height={size}
 		viewBox='0 0 512 512'
-		style='enable-background:new 0 0 512 512;'
+		style={{ enableBackground: "new 0 0 512 512" }}
 		{...props}
 	>
 		<g>

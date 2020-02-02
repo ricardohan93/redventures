@@ -34,7 +34,6 @@ const PlantForm = () => {
 
 	const next = () => {
 		let currentStep = data.currentStep;
-		// If the current step is 1 or 2, then add one on "next" button click
 		currentStep = currentStep >= 2 ? 3 : currentStep + 1;
 		setData({
 			...data,
@@ -44,7 +43,6 @@ const PlantForm = () => {
 
 	const prev = () => {
 		let currentStep = data.currentStep;
-		// If the current step is 2 or 3, then subtract one on "previous" button click
 		currentStep = currentStep <= 1 ? 1 : currentStep - 1;
 		setData({
 			...data,
