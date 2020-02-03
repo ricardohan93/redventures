@@ -1,13 +1,16 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { Fragment } from "react";
+
 import Checkbox from "components/Checkbox";
 import { H1, P } from "components/Text";
 import Icon from "components/Icon";
-import mq from "styles/breakpoints";
+
 import wateringcan from "assets/wateringcan.png";
+
+import mq from "styles/breakpoints";
 import { space } from "styles/space";
 import { avocado, white, brown } from "styles/colors";
-import { Fragment } from "react";
 
 const WaterForm = ({ currentStep, water, handleChange }) => {
 	if (currentStep !== 2) return null;
@@ -18,6 +21,12 @@ const WaterForm = ({ currentStep, water, handleChange }) => {
 			margin-right: 0;
 		}
 	`;
+
+	const waterValues = [
+		{ value: "rarely", icon: "OneDrop", label: "Rarely" },
+		{ value: "regularly", icon: "ThreeDrops", label: "Regularly" },
+		{ value: "daily", icon: "ThreeDrops", label: "Daily" }
+	];
 
 	return (
 		<Fragment>
@@ -63,72 +72,31 @@ const WaterForm = ({ currentStep, water, handleChange }) => {
 					margin-bottom: ${space[6]}px;
 				`}
 			>
-				<Checkbox
-					name='water'
-					id='rarely'
-					value='rarely'
-					onChange={handleChange}
-					css={css`
-						background-color: ${water === "rarely" ? avocado : ""};
-					`}
-				>
-					<Icon
-						name='OneDrop'
-						size='50px'
-						fill={water === "rarely" ? white : avocado}
-						css={customStyles}
-					/>
-					<P
-						color={water === "rarely" ? white : ""}
-						weight={water === "rarely" ? 700 : ""}
+				{waterValues.map(type => (
+					<Checkbox
+						name='water'
+						key={type.value}
+						id={type.value}
+						value={type.value}
+						onChange={handleChange}
+						css={css`
+							background-color: ${water === type.value ? avocado : ""};
+						`}
 					>
-						Rarely
-					</P>
-				</Checkbox>
-				<Checkbox
-					name='water'
-					id='regularly'
-					value='regularly'
-					onChange={handleChange}
-					css={css`
-						background-color: ${water === "regularly" ? avocado : ""};
-					`}
-				>
-					<Icon
-						name='ThreeDrops'
-						size='50px'
-						fill={water === "regularly" ? white : avocado}
-						css={customStyles}
-					/>
-					<P
-						color={water === "regularly" ? white : ""}
-						weight={water === "regularly" ? 700 : ""}
-					>
-						Regularly
-					</P>
-				</Checkbox>
-				<Checkbox
-					name='water'
-					id='daily'
-					value='daily'
-					onChange={handleChange}
-					css={css`
-						background-color: ${water === "daily" ? avocado : ""};
-					`}
-				>
-					<Icon
-						name='ThreeDrops'
-						size='50px'
-						fill={water === "daily" ? white : avocado}
-						css={customStyles}
-					/>
-					<P
-						color={water === "daily" ? white : ""}
-						weight={water === "daily" ? 700 : ""}
-					>
-						Daily
-					</P>
-				</Checkbox>
+						<Icon
+							name={type.icon}
+							size='50px'
+							fill={water === type.value ? white : avocado}
+							css={customStyles}
+						/>
+						<P
+							color={water === type.value ? white : ""}
+							weight={water === type.value ? 700 : ""}
+						>
+							{type.label}
+						</P>
+					</Checkbox>
+				))}
 			</div>
 		</Fragment>
 	);

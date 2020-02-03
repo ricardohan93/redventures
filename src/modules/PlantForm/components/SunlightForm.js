@@ -1,13 +1,16 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { Fragment } from "react";
+
 import Checkbox from "components/Checkbox";
 import { H1, P } from "components/Text";
 import Icon from "components/Icon";
-import mq from "styles/breakpoints";
+
 import sun_image from "assets/sun.png";
+
+import mq from "styles/breakpoints";
 import { space } from "styles/space";
 import { salmon, white, brown } from "styles/colors";
-import { Fragment } from "react";
 
 const SunlightForm = ({ currentStep, sun, handleChange }) => {
 	if (currentStep !== 1) return null;
@@ -18,6 +21,12 @@ const SunlightForm = ({ currentStep, sun, handleChange }) => {
 			margin-right: 0;
 		}
 	`;
+
+	const sunlightValues = [
+		{ value: "high", icon: "HighSun", label: "High sunlight" },
+		{ value: "low", icon: "LowSun", label: "Low sunlight" },
+		{ value: "no", icon: "NoAnswer", label: "No sunlight" }
+	];
 
 	return (
 		<Fragment>
@@ -63,69 +72,31 @@ const SunlightForm = ({ currentStep, sun, handleChange }) => {
 					margin-bottom: ${space[6]}px;
 				`}
 			>
-				<Checkbox
-					name='sun'
-					id='high'
-					value='high'
-					onChange={handleChange}
-					css={css`
-						background-color: ${sun === "high" ? salmon : ""};
-					`}
-				>
-					<Icon
-						name='HighSun'
-						size='50px'
-						fill={sun === "high" ? white : "orange"}
-						css={customStyles}
-					/>
-					<P
-						color={sun === "high" ? white : ""}
-						weight={sun === "high" ? 700 : ""}
+				{sunlightValues.map(type => (
+					<Checkbox
+						name='sun'
+						id={type.value}
+						key={type.value}
+						value={type.value}
+						onChange={handleChange}
+						css={css`
+							background-color: ${sun === type.value ? salmon : ""};
+						`}
 					>
-						High sunlight
-					</P>
-				</Checkbox>
-				<Checkbox
-					name='sun'
-					id='low'
-					value='low'
-					onChange={handleChange}
-					css={css`
-						background-color: ${sun === "low" ? salmon : ""};
-					`}
-				>
-					<Icon
-						name='LowSun'
-						size='50px'
-						fill={sun === "low" ? white : "orange"}
-						css={customStyles}
-					/>
-					<P
-						color={sun === "low" ? white : ""}
-						weight={sun === "low" ? 700 : ""}
-					>
-						Low sunlight
-					</P>
-				</Checkbox>
-				<Checkbox
-					name='sun'
-					id='no'
-					value='no'
-					onChange={handleChange}
-					css={css`
-						background-color: ${sun === "no" ? salmon : ""};
-					`}
-				>
-					<Icon
-						name='NoAnswer'
-						size='50px'
-						fill={sun === "no" ? white : "orange"}
-						css={customStyles}
-					/>
-					<P color={sun === "no" ? white : ""} weight={sun === "no" ? 700 : ""}>
-						No sunlight
-					</P>
-				</Checkbox>
+						<Icon
+							name={type.icon}
+							size='50px'
+							fill={sun === type.value ? white : "orange"}
+							css={customStyles}
+						/>
+						<P
+							color={sun === type.value ? white : ""}
+							weight={sun === type.value ? 700 : ""}
+						>
+							{type.label}
+						</P>
+					</Checkbox>
+				))}
 			</div>
 		</Fragment>
 	);
