@@ -2,12 +2,15 @@
 import { css, jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 import { useHistory } from "react-router-dom";
-import { ReactComponent as Logo } from "assets/logo-greenthumb.svg";
+
 import { H1 } from "components/Text";
 import Button from "components/Button";
 import Layout from "layouts/Layout";
+
+import { ReactComponent as Logo } from "assets/logo-greenthumb.svg";
 import illustration_home from "assets/illustration-home.png";
 import illustration_home_mobile from "assets/illustration-home-mobile.png";
+
 import { space } from "styles/space";
 import mq from "styles/breakpoints";
 

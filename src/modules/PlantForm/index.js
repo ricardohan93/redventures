@@ -2,18 +2,19 @@
 import { css, jsx } from "@emotion/core";
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Context } from "utils/context";
-import mq from "styles/breakpoints";
-import { cucumber } from "styles/colors";
-
-import { fetchPlants } from "services/plants";
 
 import FormLayout from "layouts/FormLayout";
 import Button from "components/Button";
 import SunlightForm from "./components/SunlightForm";
 import WaterForm from "./components/WaterForm";
 import PetsForm from "./components/PetsForm";
+
+import mq from "styles/breakpoints";
+import { cucumber } from "styles/colors";
 import { space } from "styles/space";
+
+import { Context } from "utils/context";
+import { fetchPlants } from "services/plants";
 
 const initialForm = {
 	currentStep: 1,

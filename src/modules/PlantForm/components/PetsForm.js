@@ -1,13 +1,16 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { Fragment } from "react";
+
 import Checkbox from "components/Checkbox";
 import { H1, P } from "components/Text";
 import Icon from "components/Icon";
-import mq from "styles/breakpoints";
+
 import dog from "assets/dog.png";
+
+import mq from "styles/breakpoints";
 import { space } from "styles/space";
 import { salmon, white, brown } from "styles/colors";
-import { Fragment } from "react";
 
 const PetsForm = ({ currentStep, pets, handleChange }) => {
 	if (currentStep !== 3) return null;
@@ -18,6 +21,11 @@ const PetsForm = ({ currentStep, pets, handleChange }) => {
 			margin-right: 0;
 		}
 	`;
+
+	const petValues = [
+		{ value: "true", icon: "Pet", label: "Yes" },
+		{ value: "false", icon: "NoAnswer", label: "No/They don't care" }
+	];
 
 	return (
 		<Fragment>
@@ -63,53 +71,34 @@ const PetsForm = ({ currentStep, pets, handleChange }) => {
 					margin-bottom: ${space[6]}px;
 				`}
 			>
-				<Checkbox
-					name='pets'
-					id='true'
-					value='true'
-					onChange={handleChange}
-					css={css`
-						background-color: ${pets === "true" ? salmon : ""};
-						${mq[0]} {
-							margin-right: ${space[5]}px;
-						}
-					`}
-				>
-					<Icon
-						name='Pet'
-						size='50px'
-						fill={pets === "true" ? white : salmon}
-						css={customStyles}
-					/>
-					<P
-						color={pets === "true" ? white : ""}
-						weight={pets === "true" ? 700 : ""}
+				{petValues.map(type => (
+					<Checkbox
+						name='pets'
+						key={type.value}
+						id={type.value}
+						value={type.value}
+						onChange={handleChange}
+						css={css`
+							background-color: ${pets === type.value ? salmon : ""};
+							${mq[0]} {
+								margin-right: ${space[5]}px;
+							}
+						`}
 					>
-						Yes
-					</P>
-				</Checkbox>
-				<Checkbox
-					name='pets'
-					id='false'
-					value='false'
-					onChange={handleChange}
-					css={css`
-						background-color: ${pets === "false" ? salmon : ""};
-					`}
-				>
-					<Icon
-						name='NoAnswer'
-						size='50px'
-						fill={pets === "false" ? white : salmon}
-						css={customStyles}
-					/>
-					<P
-						color={pets === "false" ? white : ""}
-						weight={pets === "false" ? 700 : ""}
-					>
-						No/They don't care
-					</P>
-				</Checkbox>
+						<Icon
+							name={type.icon}
+							size='50px'
+							fill={pets === type.value ? white : salmon}
+							css={customStyles}
+						/>
+						<P
+							color={pets === type.value ? white : ""}
+							weight={pets === type.value ? 700 : ""}
+						>
+							{type.label}
+						</P>
+					</Checkbox>
+				))}
 			</div>
 		</Fragment>
 	);
